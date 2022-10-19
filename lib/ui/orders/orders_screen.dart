@@ -19,13 +19,16 @@ class OrdersScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Your Orders'),
       ),
-      // drawer: const AppDrawer(),: Consumer<OrdersManager>(
-        // builder: (ctx, ordersManager, child) {
-        //   return
-      body: ListView.builder(
+      drawer: const AppDrawer(),
+      body: Consumer<OrdersManager>(
+        builder: (ctx, ordersManager, child) {
+          return ListView.builder(
             itemCount: ordersManager.orderCount,
-            itemBuilder: (ctx, i) => OrderItemCard(ordersManager.orders[i]),
-          ),
+            itemBuilder: (ctx, i) =>
+              OrderItemCard(ordersManager.orders[i]),
+          );
+        },
+      ),
       );
   }
 }
